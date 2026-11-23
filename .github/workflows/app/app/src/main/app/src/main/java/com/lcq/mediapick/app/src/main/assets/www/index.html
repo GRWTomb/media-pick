@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>媒体提取器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-decor">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <div class="grid"></div>
+</div>
+
+<main class="app">
+  <header class="hero">
+    <div class="logo-ring">
+      <img src="cover.jpg" alt="封面" onerror="this.style.display='none'">
+    </div>
+    <h1>媒体提取器</h1>
+    <p class="sub">粘贴链接 · 一键提取视频 / 封面 / 字幕</p>
+  </header>
+
+  <section class="card input-card">
+    <label class="label">视频链接</label>
+    <div class="link-row">
+      <input id="linkInput" type="text" inputmode="url" placeholder="粘贴 B站 / 抖音 / 快手 / YouTube 链接…" autocomplete="off">
+      <button id="pasteBtn" class="ghost-btn">粘贴</button>
+    </div>
+
+    <div class="opts">
+      <div class="opt-row">
+        <span class="opt-name">画质</span>
+        <div class="seg" id="qualitySeg">
+          <button data-q="best" class="active">最高</button>
+          <button data-q="1080">1080P</button>
+          <button data-q="720">720P</button>
+          <button data-q="360">360P</button>
+        </div>
+      </div>
+      <div class="opt-row">
+        <span class="opt-name">同时提取</span>
+        <label class="chk"><input type="checkbox" id="optCover" checked> 封面</label>
+        <label class="chk"><input type="checkbox" id="optSub"> 字幕</label>
+      </div>
+    </div>
+
+    <button id="parseBtn" class="primary-btn">
+      <span class="btn-text">开始提取</span>
+      <span class="spinner" hidden></span>
+    </button>
+  </section>
+
+  <section id="result" class="card result-card" hidden>
+    <div class="result-head">
+      <img id="thumb" class="thumb" alt="">
+      <div class="meta">
+        <h2 id="title">解析结果</h2>
+        <span id="platform" class="tag"></span>
+      </div>
+    </div>
+    <div class="stream-list" id="streamList"></div>
+    <div class="extra" id="extraBox" hidden>
+      <a id="coverLink" class="link-btn" download target="_blank">保存封面</a>
+      <a id="subLink" class="link-btn" download target="_blank" hidden>下载字幕 (.srt)</a>
+    </div>
+  </section>
+
+  <section id="status" class="status" hidden></section>
+  <footer class="foot">仅用于个人学习，请遵守平台版权规定</footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
